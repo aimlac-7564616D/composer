@@ -1,0 +1,4 @@
+[submodule "crawlers"]
+	path = crawlers
+	url = https://github.com/aimlac-7564616D/crawlers
+    branch = main

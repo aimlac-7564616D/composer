@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+
+  database:
+    image: mariadb
+    networks:
+      - backend
+    ports:
+      - "3306:3306"
+    volumes:
+      - "$PWD/database:/var/lib/mysql"
+      - "$PWD/database-setup/initfile.sql:/docker-entrypoint-initdb.d/initfile.sql"
+    environment:
+      # passwords don't need to be super secure because we'll deploy this on
+      # a hidden backend network that isn't accessible by anything outside of
+      # the docker-compose environment
+      - MARIADB_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
+      # simple default user
+      - MARIADB_PASSWORD=aimlac
+      - MARIADB_USER=aimlac
+
+  crawlers:
+    image: nodered/node-red
+    networks:
+      - backend
+    ports:
+      - 1880:1880
+    depends_on:
+      - database
+    environment:
+      - "AIMLAC_RSE_ADDR=${AIMLAC_RSE_ADDR}"
+      - "MET_SECRET_KEY=${MET_SECRET_KEY}"
+      - "MET_API_KEY=${MET_API_KEY}"
+    volumes:
+      - "$PWD/crawlers/flows:/data"
+
+networks:
+  backend:
+    ipam:
+      config:
+        - subnet: 172.18.5.0/24
