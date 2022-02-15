@@ -3,9 +3,7 @@ CREATE DATABASE IF NOT EXISTS llanwrytd;
 USE llanwrytd;
 
 CREATE TABLE energy_onsite(
-    entry_id INT NOT NULL AUTO_INCREMENT,
-
-    time DATETIME,
+    time DATETIME NOT NULL,
 
     hq_power INT,
     computing_center INT,
@@ -19,13 +17,11 @@ CREATE TABLE energy_onsite(
     hq_temperature DECIMAL(8,2),
     solar DECIMAL(8,2),
 
-    PRIMARY KEY ( entry_id )
+    PRIMARY KEY ( time )
 );
 
 CREATE TABLE metoffice_spot(
-    entry_id INT NOT NULL AUTO_INCREMENT,
-
-    time DATETIME,
+    time DATETIME NOT NULL,
     
     windDirectionFrom10m INT,
     visibility INT,
@@ -46,13 +42,11 @@ CREATE TABLE metoffice_spot(
     screenDewPointTemperature DECIMAL(8,2),
     feelsLikeTemperature DECIMAL(8,2),
 
-    PRIMARY KEY ( entry_id )
+    PRIMARY KEY ( time )
 );
 
 CREATE TABLE openweather_data(
-    entry_id INT NOT NULL AUTO_INCREMENT,
-
-    time DATETIME,
+    time DATETIME NOT NULL,
     
     pressure INT,
     humidity INT,
@@ -65,7 +59,7 @@ CREATE TABLE openweather_data(
     temperature_min DECIMAL(8,2),
     temperature_max DECIMAL(8,2),
 
-    PRIMARY KEY ( entry_id )
+    PRIMARY KEY ( time )
 );
 
 GRANT ALL PRIVILEGES ON llanwrytd.* TO 'aimlac'@'%';
