@@ -32,6 +32,9 @@ services:
       - "AIMLAC_RSE_ADDR=${AIMLAC_RSE_ADDR}"
       - "MET_SECRET_KEY=${MET_SECRET_KEY}"
       - "MET_API_KEY=${MET_API_KEY}"
+      - "OPEN_WEATHER_API=${OPEN_WEATHER_API}"
+      - "LOCATION_LAT=${LOCATION_LAT}"
+      - "LOCATION_LON=${LOCATION_LON}"
     volumes:
       - "$PWD/crawlers/flows:/data"
 
