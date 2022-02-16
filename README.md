@@ -25,3 +25,9 @@ Stop:
 ```
 docker-compose down
 ```
+
+## First time setup
+
+NodeRed requires dependencies to be installed manually -- either boot up the image and docker exec to `npm i` in the `/data` directory, or change directory to `crawlers/flows` and `npm i` before booting the image.
+
+First time setup for Grafana requires configuring a MySQL data source at `172.18.5.1:3306` using `llanwrytd` as the database, with user `aimlac` password `aimlac`, and importing the dashboard JSONs.
