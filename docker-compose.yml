@@ -9,8 +9,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - "$PWD/database:/var/lib/mysql"
-      - "$PWD/database-setup/initfile.sql:/docker-entrypoint-initdb.d/initfile.sql"
+      - "${PWD}/database:/var/lib/mysql"
+      - "${PWD}/database-setup/initfile.sql:/docker-entrypoint-initdb.d/initfile.sql"
     environment:
       # passwords don't need to be super secure because we'll deploy this on
       # a hidden backend network that isn't accessible by anything outside of
@@ -36,7 +36,22 @@ services:
       - "LOCATION_LAT=${LOCATION_LAT}"
       - "LOCATION_LON=${LOCATION_LON}"
     volumes:
-      - "$PWD/crawlers/flows:/data"
+      - "${PWD}/crawlers/flows:/data"
+
+  dashboard:
+    image: grafana/grafana-oss
+    networks:
+      - backend
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    user: "${UID}"
+    volumes:
+      - "${PWD}/grafana:/var/lib/grafana"
+    environment:
+      - "GF_SECURITY_ADMIN_USER=admin"
+      - "GF_SECURITY_ADMIN_PASSWORD=my_adm1n_password"
 
 networks:
   backend:
