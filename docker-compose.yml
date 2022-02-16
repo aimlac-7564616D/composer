@@ -19,6 +19,7 @@ services:
       # simple default user
       - MARIADB_PASSWORD=aimlac
       - MARIADB_USER=aimlac
+    hostname: "aimlac-database"
 
   crawlers:
     image: nodered/node-red
