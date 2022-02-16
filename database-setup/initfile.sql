@@ -2,6 +2,25 @@ CREATE DATABASE IF NOT EXISTS llanwrytd;
 
 USE llanwrytd;
 
+CREATE TABLE carbon_dioxide(
+    time DATETIME NOT NULL,
+
+    intensity INT,
+    indicator VARCHAR(16),
+    location VARCHAR(64),
+    fuel_gas DECIMAL(8,2),
+    fuel_coal DECIMAL(8,2),
+    fuel_biomass DECIMAL(8,2),
+    fuel_nuclear DECIMAL(8,2),
+    fuel_hydro DECIMAL(8,2),
+    fuel_imports DECIMAL(8,2),
+    fuel_other DECIMAL(8,2),
+    fuel_wind DECIMAL(8,2),
+    fuel_solar DECIMAL(8,2),
+
+    PRIMARY KEY ( time )
+);
+
 CREATE TABLE energy_onsite(
     time DATETIME NOT NULL,
 
