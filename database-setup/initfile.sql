@@ -6,7 +6,7 @@ CREATE TABLE carbon_dioxide(
     time DATETIME NOT NULL,
 
     intensity INT,
-    `index` VARCHAR(16),
+    indicator VARCHAR(16),
     location VARCHAR(64),
     fuel_gas DECIMAL(8,2),
     fuel_coal DECIMAL(8,2),
