@@ -1,4 +1,4 @@
 #!/bin/bash
 
-git submodule update --init --recursive --depth 1
-git submodule foreach git pull --no-rebase --allow-unrelated-histories origin main
+git submodule update --init --recursive
+git submodule update --remote --merge
