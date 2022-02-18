@@ -1,0 +1,26 @@
+name: Test Suite
+
+on:
+  #push:
+  #  branches:
+  #    - fergus/smoke-test
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup
+        run: |
+          ./update-all.sh
+          stat crawlers/flows/flows.json
+
+      - name: Start all containers
+        run: docker-compose up -d
+        
+      - name: Wind down
+        run: docker-compose down
