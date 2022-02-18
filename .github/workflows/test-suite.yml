@@ -1,12 +1,12 @@
 name: Test Suite
 
 on:
-  push:
-    branches:
-      - fergus/smoke-test
-  #pull_request:
+  #push:
   #  branches:
-  #    - main
+  #    - fergus/smoke-test
+  pull_request:
+    branches:
+      - main
 
 jobs:
   smoke-test:
