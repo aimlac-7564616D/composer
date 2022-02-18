@@ -16,7 +16,6 @@ jobs:
 
       - name: Setup
         run: |
-          git config pull.rebase false
           ./update-all.sh
           stat crawlers/flows/flows.json
 
