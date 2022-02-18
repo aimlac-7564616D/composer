@@ -1,0 +1,31 @@
+name: Test Suite
+
+on:
+  push:
+    branches:
+      - fergus/smoke-test
+  #pull_request:
+  #  branches:
+  #    - main
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup
+        run: |
+          ./update-all.sh
+          stat crawlers/flows/flows.json
+
+      - name: Start all containers
+        run: docker-compose up -d
+        
+      - name: Smoke test
+        run: |
+          curl -s --retry 10 --retry-connrefused http://localhost:1880
+          curl -s --retry 10 --retry-connrefused http://localhost:3000
+
+      - name: Wind down
+        run: docker-compose down
