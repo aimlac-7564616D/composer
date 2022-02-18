@@ -24,8 +24,8 @@ jobs:
         
       - name: Smoke test
         run: |
-          curl -s --retry 10 --retry-connrefused http://localhost:1880
-          curl -s --retry 10 --retry-connrefused http://localhost:3000
+          curl --retry 10 --retry-connrefused http://localhost:1880
+          curl --retry 10 --retry-connrefused http://localhost:3000
 
       - name: Wind down
         run: docker-compose down
