@@ -29,6 +29,7 @@ services:
       - 1880:1880
     depends_on:
       - database
+    user: "${UID}"
     environment:
       - "AIMLAC_RSE_ADDR=${AIMLAC_RSE_ADDR}"
       - "MET_SECRET_KEY=${MET_SECRET_KEY}"
@@ -53,6 +54,32 @@ services:
     environment:
       - "GF_SECURITY_ADMIN_USER=admin"
       - "GF_SECURITY_ADMIN_PASSWORD=my_adm1n_password"
+
+  web-view:
+    build: ./web-view
+    networks:
+      - backend
+    depends_on:
+      - database
+    environment:
+      # default database user
+      - "SQL_USER=aimlac"
+      - "SQL_PASS=aimlac"
+      - "SQL_HOST=aimlac-database"
+      - "SQL_DATABASE=llanwrytd"
+      - "JWT_SECRET=${JWT_SECRET}"
+    hostname: "aimlac-web-view"
+  
+  nginx:
+    image: nginx:1.21.6-alpine
+    networks:
+      - backend
+    depends_on:
+      - web-view
+    ports:
+      - 80:80
+    volumes:
+      - "${PWD}/nginx:/etc/nginx/conf.d"
 
 networks:
   backend:

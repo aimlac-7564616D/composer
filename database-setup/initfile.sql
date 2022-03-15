@@ -2,6 +2,23 @@ CREATE DATABASE IF NOT EXISTS llanwrytd;
 
 USE llanwrytd;
 
+CREATE TABLE userData (
+    userIndex INT NOT NULL AUTO_INCREMENT,
+    userID VARCHAR(128) UNIQUE NOT NULL,
+    userEmail VARCHAR(128),
+    userPassword VARCHAR(256),
+    userRole ENUM('admin', 'non-admin', 'pending'),
+    PRIMARY KEY ( userIndex )
+);
+
+-- web-view's default username/password: admin/aimlac
+-- password hashed using sha256
+INSERT INTO userData SET
+    userID = 'admin',
+    userEmail = 'admin@aimlac.com',
+    userPassword = '71f3fcb0ee1407a3c49a9b2f207f68c9f21cd6dec7a516499883b4c740d01295',
+    userRole = 'admin';
+
 CREATE TABLE carbon_dioxide(
     time DATETIME NOT NULL,
 

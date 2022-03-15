@@ -2,3 +2,6 @@
 	path = crawlers
 	url = https://github.com/aimlac-7564616D/crawlers
     branch = main
+[submodule "web-view"]
+	path = web-view
+	url = https://github.com/aimlac-7564616D/web-view
