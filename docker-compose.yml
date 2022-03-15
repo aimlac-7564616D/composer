@@ -79,7 +79,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - "${PWD}/web-view/nginx:/etc/nginx/conf.d"
+      - "${PWD}/nginx:/etc/nginx/conf.d"
 
 networks:
   backend:
