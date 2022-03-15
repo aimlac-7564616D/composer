@@ -3,13 +3,16 @@ CREATE DATABASE IF NOT EXISTS llanwrytd;
 USE llanwrytd;
 
 CREATE TABLE userData (
-    userID VARCHAR(128) NOT NULL,
+    userIndex INT NOT NULL AUTO_INCREMENT,
+    userID VARCHAR(128) UNIQUE NOT NULL,
     userEmail VARCHAR(128),
     userPassword VARCHAR(256),
     userRole ENUM('admin', 'non-admin', 'pending'),
-    PRIMARY KEY ( userID )
+    PRIMARY KEY ( userIndex )
 );
 
+-- web-view's default username/password: admin/aimlac
+-- password hashed using sha256
 INSERT INTO userData SET
     userID = 'admin',
     userEmail = 'admin@aimlac.com',
