@@ -1,18 +1,24 @@
 name: Test Suite
 
 on:
+  workflow_run:
+    workflows: [Update Submodules]
+    types:
+      - completed
   #push:
   #  branches:
   #    - fergus/smoke-test
-  pull_request:
-    branches:
-      - main
+  #pull_request:
+  #  branches:
+  #    - main
 
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Setup
         run: |
