@@ -1,17 +1,16 @@
 name: Test Suite
 
 on:
+  workflow_run:
+    workflows: [Update Submodules]
+    types:
+      - completed
   #push:
   #  branches:
   #    - fergus/smoke-test
   #pull_request:
   #  branches:
   #    - main
-  workflow_run:
-    workflows:
-      - 'Update Submodules'
-    types:
-      - completed
 
 jobs:
   smoke-test:
