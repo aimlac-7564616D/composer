@@ -4,9 +4,15 @@ on:
   #push:
   #  branches:
   #    - fergus/smoke-test
-  pull_request:
-    branches:
-      - main
+  #pull_request:
+  #  branches:
+  #    - main
+  on:
+  workflow_run:
+    workflows:
+      - Update Submodules
+    types:
+      - completed
 
 jobs:
   smoke-test:
