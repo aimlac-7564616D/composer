@@ -24,11 +24,14 @@ jobs:
           
           # check if we need to push
           if [[ $(git diff) ]]; then
+            echo "Setting Continue Flag"
             echo "CONTINUE=true" >> $GITHUB_ENV
+          else
+            echo "Everything up to date"
           fi
 
       - name: Add and commit to PR
-        if: env.CONTINUE == true
+        if: env.CONTINUE == 'true'
         uses: EndBug/add-and-commit@v9
         with:
           add: 'crawlers web-view models'
