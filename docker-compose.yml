@@ -29,6 +29,7 @@ services:
       - 1880:1880
     depends_on:
       - database
+      - models
     user: "${UID}"
     environment:
       - "AIMLAC_RSE_ADDR=${AIMLAC_RSE_ADDR}"
@@ -55,12 +56,23 @@ services:
       - "GF_SECURITY_ADMIN_USER=admin"
       - "GF_SECURITY_ADMIN_PASSWORD=my_adm1n_password"
 
+  models:
+    build: ./models
+    networks:
+      - backend
+    environment:
+      - "LOCATION_LAT=${LOCATION_LAT}"
+      - "LOCATION_LON=${LOCATION_LON}"
+    hostname: "aimlac-models"
+
   web-view:
     build: ./web-view
     networks:
       - backend
     depends_on:
       - database
+    volumes:
+      - "${PWD}/web-view/server/dashboard:/app/dashboard"
     environment:
       # default database user
       - "SQL_USER=aimlac"

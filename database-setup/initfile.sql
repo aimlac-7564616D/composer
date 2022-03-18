@@ -2,6 +2,16 @@ CREATE DATABASE IF NOT EXISTS llanwrytd;
 
 USE llanwrytd;
 
+CREATE TABLE powerPrediction (
+    time DATETIME NOT NULL,
+
+    WindPower DECIMAL(8, 2),
+    WindSpeed DECIMAL(8, 2),
+    SolarPower DECIMAL(8, 2),
+
+    PRIMARY KEY ( time )
+);
+
 CREATE TABLE userData (
     userIndex INT NOT NULL AUTO_INCREMENT,
     userID VARCHAR(128) UNIQUE NOT NULL,
