@@ -30,7 +30,7 @@ jobs:
         if: env.CONTINUE == true
         uses: EndBug/add-and-commit@v9
         with:
-          add: ['crawlers', 'web-view', 'models']
+          add: 'crawlers web-view models'
           message: 'updated submodule commit hash'
           push: 'origin ${{ github.event.pull_request.head.ref }}'
           default_author: github_actions
