@@ -20,6 +20,7 @@ jobs:
           cd crawlers && git pull origin main && cd ..
           cd web-view && git pull origin main && cd ..
           cd models && git pull origin main && cd ..
+          git diff
           
           # check if we need to push
           if [[ $(git diff) ]]; then
