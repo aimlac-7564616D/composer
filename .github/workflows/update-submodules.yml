@@ -1,4 +1,4 @@
-name: Update Submodules
+name: Submodules
 
 on:
   pull_request:
