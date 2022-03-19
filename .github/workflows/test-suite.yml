@@ -1,9 +1,9 @@
-name: Test Suite
+name: test-suite
 
 on:
   workflow_run:
     workflows:
-      - Submodules
+      - update-submodules
     types:
       - completed
   #push:
