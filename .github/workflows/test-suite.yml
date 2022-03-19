@@ -2,7 +2,8 @@ name: Test Suite
 
 on:
   workflow_run:
-    workflows: [Update Submodules]
+    workflows:
+      - Submodules
     types:
       - completed
   #push:
