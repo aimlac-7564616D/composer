@@ -38,6 +38,7 @@ services:
       - "OPEN_WEATHER_API=${OPEN_WEATHER_API}"
       - "LOCATION_LAT=${LOCATION_LAT}"
       - "LOCATION_LON=${LOCATION_LON}"
+      - "ELEXON_API_KEY=${ELEXON_API_KEY}"
     volumes:
       - "${PWD}/crawlers/flows:/data"
 
@@ -57,7 +58,7 @@ services:
       - "GF_SECURITY_ADMIN_PASSWORD=my_adm1n_password"
 
   models:
-    build: ./models
+    image: dustpancake/aimlac-cc-models
     networks:
       - backend
     environment:
@@ -66,7 +67,7 @@ services:
     hostname: "aimlac-models"
 
   web-view:
-    build: ./web-view
+    image: dustpancake/aimlac-cc-web-view
     networks:
       - backend
     depends_on:

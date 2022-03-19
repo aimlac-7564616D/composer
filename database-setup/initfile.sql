@@ -14,6 +14,33 @@ CREATE TABLE powerPrediction (
     PRIMARY KEY ( time )
 );
 
+CREATE TABLE elexonDERSYdata (
+    settlementDate DATETIME NOT NULL,
+    settlementPeriod INT NOT NULL,
+
+    systemSellPrice DECIMAL(8,2),
+    systemBuyPrice DECIMAL(8,2),
+    bSADDefault VARCHAR(16),
+    priceDerivationCode VARCHAR(16),
+    reserveScarcityPrice DECIMAL(8,2),
+    indicativeNetImbalanceVolume DECIMAL(8,2),
+    sellPriceAdjustment DECIMAL(8,2),
+    buyPriceAdjustment DECIMAL(8,2),
+    replacementPrice DECIMAL(8,2),
+    replacementPriceCalculationVolume DECIMAL(8,2),
+    totalSystemAcceptedOfferVolume DECIMAL(8,2),
+    totalSystemAcceptedBidVolume DECIMAL(8,2),
+    totalSystemTaggedAcceptedOfferVolume DECIMAL(8,2),
+    totalSystemTaggedAcceptedBidVolume DECIMAL(8,2),
+    totalSystemPricedAcceptedOfferVolume DECIMAL(8,2),
+    totalSystemAdjustmentSellVolume DECIMAL(8,2),
+    totalSystemAdjustmentBuyVolume DECIMAL(8,2),
+    totalSystemTaggedAdjustmentSellVolume DECIMAL(8,2),
+    totalSystemTaggedAdjustmentBuyVolume DECIMAL(8,2),
+
+    PRIMARY KEY (settlementDate, settlementPeriod)
+);
+
 CREATE TABLE userData (
     userIndex INT NOT NULL AUTO_INCREMENT,
     userID VARCHAR(128) UNIQUE NOT NULL,
