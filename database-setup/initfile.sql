@@ -41,6 +41,35 @@ CREATE TABLE elexonDERSYdata (
     PRIMARY KEY (settlementDate, settlementPeriod)
 );
 
+CREATE TABLE elexonB0620 (
+    settlementDate DATETIME NOT NULL,
+    settlementPeriod INT NOT NULL,
+
+    quantity INT,
+    activeFlag VARCHAR(16)
+
+    PRIMARY KEY (settlementDate, settlementPeriod)
+);
+
+CREATE TABLE elexonB1620 (
+    settlementDate DATETIME NOT NULL,
+    settlementPeriod INT NOT NULL,
+
+    biomass INT,
+    hydroPumpedStorage INT,
+    hydroRunofriverAndPoundage INT,
+    fossilHardCoal INT,
+    fossilGas INT,
+    fossilOil INT,
+    nuclear INT,
+    windOnshore INT,
+    windOffshore INT,
+    solar INT,
+    other INT,
+
+    PRIMARY KEY (settlementDate, settlementPeriod)
+);
+
 CREATE TABLE userData (
     userIndex INT NOT NULL AUTO_INCREMENT,
     userID VARCHAR(128) UNIQUE NOT NULL,
