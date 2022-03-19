@@ -46,7 +46,7 @@ CREATE TABLE elexonB0620 (
     settlementPeriod INT NOT NULL,
 
     quantity INT,
-    activeFlag VARCHAR(16)
+    activeFlag VARCHAR(16),
 
     PRIMARY KEY (settlementDate, settlementPeriod)
 );
