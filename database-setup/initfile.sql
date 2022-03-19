@@ -5,9 +5,11 @@ USE llanwrytd;
 CREATE TABLE powerPrediction (
     time DATETIME NOT NULL,
 
-    WindPower DECIMAL(8, 2),
-    WindSpeed DECIMAL(8, 2),
-    SolarPower DECIMAL(8, 2),
+    WindSpeed DECIMAL(8, 3),
+    WindPower DECIMAL(8, 3),
+    SolarPower DECIMAL(8, 3),
+    HQPowerDemand DECIMAL(8, 3),
+    HQTemperature DECIMAL(8, 3),
 
     PRIMARY KEY ( time )
 );
