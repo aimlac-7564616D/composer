@@ -2,6 +2,16 @@ CREATE DATABASE IF NOT EXISTS llanwrytd;
 
 USE llanwrytd;
 
+CREATE TABLE rseMarket (
+    settlementDate DATETIME NOT NULL,
+    settlementPeriod INT NOT NULL,
+    clearoutPrice DECIMAL(8, 2),
+    clearoutVolume DECIMAL(8, 2),
+    imbalancePrice DECIMAL(8, 2),
+
+    PRIMARY KEY (settlementDate, settlementPeriod)
+);
+
 CREATE TABLE powerPrediction (
     time DATETIME NOT NULL,
 
