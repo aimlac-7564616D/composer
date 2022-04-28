@@ -62,6 +62,8 @@ services:
     networks:
       - backend
     environment:
+      - "AIMLAC_RSE_ADDR=${AIMLAC_RSE_ADDR}"
+      - "AIMLAC_RSE_KEY=${AIMLAC_RSE_KEY}"
       - "LOCATION_LAT=${LOCATION_LAT}"
       - "LOCATION_LON=${LOCATION_LON}"
     hostname: "aimlac-models"
@@ -81,6 +83,8 @@ services:
       - "SQL_HOST=aimlac-database"
       - "SQL_DATABASE=llanwrytd"
       - "JWT_SECRET=${JWT_SECRET}"
+      - "AIMLAC_RSE_ADDR=${AIMLAC_RSE_ADDR}"
+      - "AIMLAC_RSE_KEY=${AIMLAC_RSE_KEY}"
     hostname: "aimlac-web-view"
   
   nginx:
