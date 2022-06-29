@@ -116,6 +116,12 @@ CREATE TABLE carbon_dioxide(
     PRIMARY KEY ( time )
 );
 
+CREATE TABLE carbon_dioxide_saved(
+    time DATETIME NOT NULL,
+    co2saved DECIMAL(8,2),
+    PRIMARY KEY ( time )
+);
+
 CREATE TABLE energy_onsite(
     time DATETIME NOT NULL,
 
