@@ -2,6 +2,14 @@ CREATE DATABASE IF NOT EXISTS llanwrytd;
 
 USE llanwrytd;
 
+CREATE TABLE pricePrediction (
+    time DATETIME NOT NULL,
+
+    price DECIMAL(8, 2),
+
+    PRIMARY KEY ( time )
+);
+
 CREATE TABLE rseMarket (
     settlementDate DATETIME NOT NULL,
     settlementPeriod INT NOT NULL,
